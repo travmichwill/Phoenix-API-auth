@@ -75,10 +75,10 @@ Vagrant.configure(2) do |config|
   config.vm.provision :shell, path: 'config/vagrant/phoenix_setup.sh', privileged: false
   config.vm.provision "shell", inline: <<-SHELL
 	echo "Starting moving project"
-	mkdir /vagrant/vapir && cp -R /vagrant/dev/* /vagrant/vapir
-	cd /vagrant/vapir
+	mkdir /vagrant/auth_api && cp -R /vagrant/dev/* /vagrant/auth_api
+	cd /vagrant/auth_api
 	mix deps.get || echo "Mix Deps.Get Failed! Return Code: $?"
-	chown -R vagrant /vagrant/vapir && chgrp -R vagrant /vagrant/vapir
+	chown -R vagrant /vagrant/auth_api && chgrp -R vagrant /vagrant/auth_api
 	echo "Provisioning Complete"
   SHELL
 end
