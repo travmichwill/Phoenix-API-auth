@@ -23,6 +23,6 @@ defmodule AuthApi.Router do
   scope "/api", AuthApi do
     pipe_through :api
 	
-	resources "/user", UserController, only: [:create]
+	resources "/user", UserController, only: [:create, :show]
   end
 end
