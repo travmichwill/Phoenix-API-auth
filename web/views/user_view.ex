@@ -2,7 +2,10 @@ defmodule AuthApi.UserView do
   use AuthApi.Web, :view
 
   def render("show.json", %{user: user}) do
-    render_one(user, AuthApi.UserView, "user.json")
+    #render_one(user, AuthApi.UserView, "user.json")
+	%{user_id: user.user_id,
+      email: user.email,
+	  username: user.username}
   end
 
   def render("user.json", %{user: user}) do
