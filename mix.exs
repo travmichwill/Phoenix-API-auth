@@ -39,7 +39,8 @@ defmodule AuthApi.Mixfile do
 	 {:comeonin, "~> 2.0"},
 	 {:cors_plug, "~> 1.1"},
      {:cowboy, "~> 1.0"},
-	 {:poison, "~> 1.5"}]
+	 {:poison, "~> 1.5"},
+	 {:secure_random, "~> 0.2"}]
   end
 
   # Aliases are shortcut or tasks specific to the current project.
