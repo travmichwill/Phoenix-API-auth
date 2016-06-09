@@ -4,7 +4,7 @@ defmodule AuthApi.UserController do
   alias AuthApi.User
 
   #plug :scrub_params, "email" when action in [:create]
-  plug :authenticate when action in [:show]
+  #plug :authenticate when action in [:show]
 
   #def create(conn, %{"email" => user_params}) do
   def create(conn, user_params) do
@@ -31,7 +31,8 @@ defmodule AuthApi.UserController do
   defp authenticate(conn, _opts) do
 	# conn.assigns.current_user does not work Page: 79
 	# Fix: https://robots.thoughtbot.com/testing-elixir-plugs
-    if conn.assigns[:current_user] do
+	if conn.assigns.current_user do
+    #if conn.assigns[:current_user] do
 	  conn
 	else
 	  conn
