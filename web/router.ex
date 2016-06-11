@@ -14,7 +14,6 @@ defmodule AuthApi.Router do
   end
   
   pipeline :authenticate do
-    plug :fetch_session
     plug AuthApi.Auth, repo: AuthApi.Repo
   end
 

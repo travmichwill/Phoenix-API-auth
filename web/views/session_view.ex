@@ -3,7 +3,7 @@ defmodule AuthApi.SessionView do
   use AuthApi.Web, :view
 
   def render("show.json", %{session: session}) do
-    %{data: render_one(session, AuthApi.SessionView, "session.json")}
+    render_one(session, AuthApi.SessionView, "session.json")
   end
 
   def render("session.json", %{session: session}) do

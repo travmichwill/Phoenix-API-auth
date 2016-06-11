@@ -3,7 +3,7 @@ defmodule AuthApi.Session do
 
   schema "sessions" do
     field :token, :string
-    belongs_to :user, AuthApi.User
+	field :user_id, Ecto.UUID
 
     timestamps
   end
@@ -23,8 +23,9 @@ defmodule AuthApi.Session do
   end
 
   def registration_changeset(model, params \\ :empty) do
+    rand = SecureRandom.urlsafe_base64()
     model
     |> changeset(params)
-    |> put_change(:token, SecureRandom.urlsafe_base64())
+    |> put_change(:token, rand)
   end
 end
