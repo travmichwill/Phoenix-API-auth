@@ -36,7 +36,6 @@ Body: {"username": "testuser", "password": "Password123"}
 Type: GET
 URL: 127.0.0.1:4000/api/user/7933906c-338f-47b0-a158-b77de6482176
 Header: Authorization: usbBFw78IGnHacYHjRUfWA
-Body: {"email": "testemail@gmail.com", "username": "testuser", "password": "Password123"}
 ```
 
 ### Validate Response:
