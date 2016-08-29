@@ -19,7 +19,7 @@ defmodule AuthApi.Mixfile do
   def application do
     [mod: {AuthApi, []},
      applications: [:phoenix, :phoenix_html, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex, :comeonin]]
+                    :phoenix_ecto, :postgrex, :comeonin, :timex]]
   end
 
   # Specifies which paths to compile per environment.
@@ -40,7 +40,9 @@ defmodule AuthApi.Mixfile do
 	 {:cors_plug, "~> 1.1"},
      {:cowboy, "~> 1.0"},
 	 {:poison, "~> 1.5"},
-	 {:secure_random, "~> 0.2"}]
+	 {:secure_random, "~> 0.2"},
+     {:credo, "~> 0.4", only: [:dev, :test]},
+     {:timex, "~> 3.0"}]
   end
 
   # Aliases are shortcut or tasks specific to the current project.

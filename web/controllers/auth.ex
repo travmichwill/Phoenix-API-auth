@@ -1,6 +1,7 @@
 defmodule AuthApi.Auth do
   import Plug.Conn
-  import Comeonin.Bcrypt, only: [checkpw: 2, dummy_checkpw: 0]
+  import Ecto.Query
+  use Timex  
   alias AuthApi.Session
   alias AuthApi.Repo
   
@@ -9,13 +10,14 @@ defmodule AuthApi.Auth do
   end
   
   def call(conn, _repo) do
-	[token] = get_req_header(conn, "authorization")
-	case session = Repo.get_by(Session, token: token) do
-	  nil -> conn
-	    |> Phoenix.Controller.text("You are not authenticated!")
-	    |> halt()
-	  session -> conn
-	end
-
+    [token] = get_req_header(conn, "authorization")
+    expiration = Timex.subtract(Timex.now,Duration.from_minutes(30))
+    query = from s in AuthApi.Session, where: s.token == ^token and s.updated_at >= ^expiration
+    case session = Repo.all(query) do
+      [] -> conn
+        |> Phoenix.Controller.text("You are not authenticated!")
+        |> halt()
+      session -> conn
+    end
   end
 end
