@@ -25,13 +25,13 @@ defmodule AuthApi.Router do
   # Scope Requiring Authentication
   scope "/api", AuthApi do
     pipe_through [:api, :authenticate]
-	resources "/user", UserController, only: [:show]
+    resources "/user", UserController, only: [:show]
   end
   
   # Scope Not Requiring Authentication
   scope "/api", AuthApi do
     pipe_through :api
-	resources "/user", UserController, only: [:create]
-	resources "/session", SessionController, only: [:create]
+    resources "/user", UserController, only: [:create]
+    resources "/session", SessionController, only: [:create]
   end
 end

@@ -12,13 +12,13 @@ defmodule AuthApi.SessionController do
     cond do
       user && checkpw(user_params["password"], user.password_hash) ->
         session_changeset = Session.registration_changeset(%Session{}, %{user_id: user.user_id})
-		
-		case session = Repo.get_by(Session, user_id: user.user_id) do
-		  nil -> {:ok, session} = Session.registration_changeset(%Session{}, %{user_id: user.user_id})
-		    |> Repo.insert()
-		  session -> session = Session.registration_changeset(session, %{user_id: user.user_id})
-		    |> Repo.update!()
-		end
+        
+        case session = Repo.get_by(Session, user_id: user.user_id) do
+          nil -> {:ok, session} = Session.registration_changeset(%Session{}, %{user_id: user.user_id})
+            |> Repo.insert()
+          session -> session = Session.registration_changeset(session, %{user_id: user.user_id})
+            |> Repo.update!()
+        end
 
         conn
         |> put_status(:created)

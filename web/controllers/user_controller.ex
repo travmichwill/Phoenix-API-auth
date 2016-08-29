@@ -18,7 +18,7 @@ defmodule AuthApi.UserController do
   end
   
   def show(conn, %{"id" => user_id}) do
-	user = Repo.get(AuthApi.User, user_id)
-	render conn, "show.json", user: user
+    user = Repo.get(AuthApi.User, user_id)
+    render conn, "show.json", user: user
   end
 end

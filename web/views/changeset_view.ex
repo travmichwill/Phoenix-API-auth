@@ -7,13 +7,13 @@ defmodule AuthApi.ChangesetView do
         #source: %{ pointer: "/data/attributes/#{field}" },
         #title: "Invalid Attribute",
         #detail: render_detail(detail)
-		field: "#{field}",
-		error: render_detail(detail)
+        field: "#{field}",
+        error: render_detail(detail)
       }
     end)
 
     %{errors: errors}
-	#errors
+    #errors
   end
 
   def render_detail({message, values}) do

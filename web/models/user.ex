@@ -7,7 +7,7 @@ defmodule AuthApi.User do
   
   schema "users" do
     field :email, :string
-	field :username, :string
+    field :username, :string
     field :password_hash, :string
     field :password, :string, virtual: true
     field :first, :string
@@ -34,17 +34,17 @@ defmodule AuthApi.User do
 
   def changeset(model, params \\ :empty) do
     model
-	|> cast(params, @required_fields, @optional_fields)
+    |> cast(params, @required_fields, @optional_fields)
     |> validate_length(:email, min: 1, max: 255)
     |> validate_format(:email, ~r/@/)
-	|> unique_constraint(:email)
-	|> unique_constraint(:username)
+    |> unique_constraint(:email)
+    |> unique_constraint(:username)
   end
   
   def registration_changeset(model, params \\ :empty) do
     model
     |> changeset(params)
-	|> cast(params, @required_fields, @optional_fields)
+    |> cast(params, @required_fields, @optional_fields)
     |> validate_length(:password, min: 6)
     |> put_password_hash
   end
@@ -60,7 +60,7 @@ defmodule AuthApi.User do
   
   defimpl Poison.Encoder, for: AuthApi.User do
     def encode(user, _options) do
-	  IO.puts "Encoding"
+      IO.puts "Encoding"
       user
       |> Map.from_struct
       |> Map.drop([:__meta__, :__struct__])

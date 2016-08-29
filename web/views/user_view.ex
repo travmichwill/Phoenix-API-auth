@@ -3,9 +3,9 @@ defmodule AuthApi.UserView do
 
   def render("show.json", %{user: user}) do
     #render_one(user, AuthApi.UserView, "user.json")
-	%{user_id: user.user_id,
+    %{user_id: user.user_id,
       email: user.email,
-	  username: user.username}
+      username: user.username}
   end
 
   def render("user.json", %{user: user}) do

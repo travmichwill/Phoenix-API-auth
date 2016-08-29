@@ -3,7 +3,7 @@ defmodule AuthApi.Session do
 
   schema "sessions" do
     field :token, :string
-	field :user_id, Ecto.UUID
+    field :user_id, Ecto.UUID
 
     timestamps
   end
