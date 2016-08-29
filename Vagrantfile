@@ -79,6 +79,9 @@ Vagrant.configure(2) do |config|
 	cd /vagrant/auth_api
 	mix deps.get || echo "Mix Deps.Get Failed! Return Code: $?"
 	chown -R vagrant /vagrant/auth_api && chgrp -R vagrant /vagrant/auth_api
+    apt-get install erlang-dev
+    apt-get install erlang-parsetools
+    mix deps.update phoenix_html
 	echo "Provisioning Complete"
   SHELL
 end
