@@ -1,6 +1,11 @@
 # Phoenix API Auth
 This application is to demonstrate user creation, session validation, and restricting API access from a central location.
 
+- [x] Session Expiration Timeouts (30 Minutes)
+- [x] Configurable Session Timeouts (Plug Configuration)
+- [ ] Auto-Renew session if still valid
+- [ ] Rate Limit Authentication API
+
 ### Create Users:
 ```
 Type: POST
