@@ -14,7 +14,7 @@ defmodule AuthApi.Router do
   end
   
   pipeline :authenticate do
-    plug AuthApi.Auth, repo: AuthApi.Repo
+    plug AuthApi.Auth, timeout_minutes: 30
   end
 
   scope "/", AuthApi do

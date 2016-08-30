@@ -5,13 +5,14 @@ defmodule AuthApi.Auth do
   alias AuthApi.Session
   alias AuthApi.Repo
   
-  def init(opts) do
-    Keyword.fetch!(opts, :repo)
+  def init(options) do
+    options
   end
   
-  def call(conn, _repo) do
+  def call(conn, options) do
     [token] = get_req_header(conn, "authorization")
-    expiration = Timex.subtract(Timex.now,Duration.from_minutes(30))
+    timeout = options[:timeout_minutes]
+    expiration = Timex.subtract(Timex.now,Duration.from_minutes(timeout))
     query = from s in AuthApi.Session, where: s.token == ^token and s.updated_at >= ^expiration
     case session = Repo.all(query) do
       [] -> conn
